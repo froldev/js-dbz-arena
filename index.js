@@ -46,4 +46,9 @@ const maxHug = 10;
 const maxPotion = 30;
 const startLife = 100;
 const characters = [];
+
+// table of fighters
+for(let i = 0; i < characterNames.length; i++) {
+    characters.push(new Character(characterNames[i], startLife));
+}
     
