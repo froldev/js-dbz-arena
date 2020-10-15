@@ -28,4 +28,22 @@ class Character {
     
     }
 }
+
+// variables
+const characterNames = [
+        'Son Goku', 
+        'Vegeta', 
+        'Piccolo', 
+        'Krilin', 
+        'Tortue Géniale', 
+        'Freezer', 
+        'Cell Imparfait', 
+        'King Piccolo', 
+        'Super Buu', 
+        'Cooler'
+    ];
+const maxHug = 10;
+const maxPotion = 30;
+const startLife = 100;
+const characters = [];
     
