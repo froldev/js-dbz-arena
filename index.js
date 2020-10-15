@@ -21,9 +21,15 @@ class Character {
         console.log(`${this.name} give hugs (+${amelioration}) to ${target.name}. ${target.life} life points remain.`);
     }
     
-    giveAKick(target, damage) {
+    giveAKick(target, damage, index) {
         target.life -= damage;
-        console.log(`${this.name} give kicks (+${damage}) to ${target.name}. ${target.life} life points remain.`);
+        // delete fighter
+        if(target.life <= 0) {
+            console.log(`xxx -- RIP ${target.name} -- xxx`);
+            characters.splice(index,1);
+        } else {
+            console.log(`${this.name} give kicks (+${damage}) to ${target.name}. ${target.life} life points remain.`);
+        }
     }
     
     takePotion(nbrPointsLife) {
@@ -36,17 +42,15 @@ class Character {
 const characterNames = [
         'Son Goku', 
         'Vegeta', 
-        'Piccolo', 
         'Krilin', 
         'Tortue Géniale', 
         'Freezer', 
-        'Cell Imparfait', 
-        'King Piccolo', 
+        'Cell', 
         'Super Buu', 
         'Cooler'
     ];
-const maxHug = 10;
-const maxKick = 80;
+const maxHug = 5;
+const maxKick = 90;
 const maxPotion = 20;
 const startLife = 100;
 const characters = [];
@@ -67,12 +71,19 @@ while(true) {
         receiverAction = random(characters.length);
     }
 
+    // winner is ?
+    if(characters.length <= 1) {
+        console.log(`${characters[0].name} IS WINNER !!!`);
+        return false;
+    }
+
+    // list of actions
     // hugs
     if (action === 0) {
         characters[emitterAction].giveHugs(characters[receiverAction], random(maxHug));
     // kick
     } else if (action === 1) {
-        characters[emitterAction].giveAKick(characters[receiverAction], random(maxKick));
+        characters[emitterAction].giveAKick(characters[receiverAction], random(maxKick), receiverAction);
     // potion
     } else if (action === 2) {
         characters[emitterAction].takePotion(random(maxPotion));
