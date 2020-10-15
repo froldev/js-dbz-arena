@@ -52,3 +52,28 @@ for(let i = 0; i < characterNames.length; i++) {
     characters.push(new Character(characterNames[i], startLife));
 }
     
+// fight
+while(true) {
+    let action = random(3);
+    let emitterAction = random(characters.length);
+    let receiverAction = random(characters.length);
+    
+    // same emitter and receiver
+    while (emitterAction === receiverAction) {
+        receiverAction = random(characters.length);
+    }
+
+    // hugs
+    if (action === 0) {
+        console.log('hugs');
+    // kick
+    } else if (action === 1) {
+        console.log('kick');
+    // potion
+    } else if (action === 2) {
+        console.log('potion');
+    }
+
+    // delay
+    sleep(500);
+}
