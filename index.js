@@ -21,8 +21,9 @@ class Character {
         console.log(`${this.name} give hugs (+${amelioration}) to ${target.name}. ${target.life} life points remain.`);
     }
     
-    giveAKick() {
-    
+    giveAKick(target, damage) {
+        target.life -= damage;
+        console.log(`${this.name} give kicks (+${damage}) to ${target.name}. ${target.life} life points remain.`);
     }
     
     takePotion(nbrPointsLife) {
@@ -45,7 +46,8 @@ const characterNames = [
         'Cooler'
     ];
 const maxHug = 10;
-const maxPotion = 30;
+const maxKick = 80;
+const maxPotion = 20;
 const startLife = 100;
 const characters = [];
 
@@ -70,7 +72,7 @@ while(true) {
         characters[emitterAction].giveHugs(characters[receiverAction], random(maxHug));
     // kick
     } else if (action === 1) {
-        console.log('kick');
+        characters[emitterAction].giveAKick(characters[receiverAction], random(maxKick));
     // potion
     } else if (action === 2) {
         characters[emitterAction].takePotion(random(maxPotion));
