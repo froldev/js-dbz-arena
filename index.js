@@ -16,8 +16,9 @@ class Character {
         this.life = life;
     }
     
-    giveHugs() {
-    
+    giveHugs(target, amelioration) {
+        target.life += amelioration;
+        console.log(`${this.name} give hugs (+${amelioration}) to ${target.name}. ${target.life} life points remain.`);
     }
     
     giveAKick() {
@@ -65,7 +66,7 @@ while(true) {
 
     // hugs
     if (action === 0) {
-        console.log('hugs');
+        characters[emitterAction].giveHugs(characters[receiverAction], random(maxHug));
     // kick
     } else if (action === 1) {
         console.log('kick');
