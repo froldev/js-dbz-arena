@@ -25,8 +25,9 @@ class Character {
     
     }
     
-    takePotion() {
-    
+    takePotion(nbrPointsLife) {
+        this.life += nbrPointsLife
+        console.log(`${this.name} take potion life (${nbrPointsLife}). ${this.life} life points remain.`)
     }
 }
 
@@ -72,7 +73,7 @@ while(true) {
         console.log('kick');
     // potion
     } else if (action === 2) {
-        console.log('potion');
+        characters[emitterAction].takePotion(random(maxPotion));
     }
 
     // delay
